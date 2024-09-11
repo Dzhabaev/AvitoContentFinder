@@ -18,6 +18,7 @@ struct UnsplashPhotoModel: Codable {
 
 struct Urls: Codable {
     let regular: String
+    let full: String
 }
 
 struct User: Codable {

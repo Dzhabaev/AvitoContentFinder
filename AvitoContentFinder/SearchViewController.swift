@@ -35,7 +35,7 @@ final class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        overrideUserInterfaceStyle = .light
         setupViews()
         collectionView.register(
             PhotoCell.self,
@@ -49,7 +49,7 @@ final class SearchViewController: UIViewController {
     // MARK: - Private Methods
     
     private func setupViews() {
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = .white
         
         [searchBar,
          collectionView,
@@ -61,6 +61,7 @@ final class SearchViewController: UIViewController {
         
         searchBar.delegate = self
         collectionView.dataSource = self
+        collectionView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isHidden = true
@@ -113,6 +114,16 @@ extension SearchViewController: UICollectionViewDataSource {
         let photo = photos[indexPath.item]
         cell.configure(with: photo)
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
+extension SearchViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedPhoto = photos[indexPath.item]
+        let detailVC = DetailViewController(photo: selectedPhoto)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

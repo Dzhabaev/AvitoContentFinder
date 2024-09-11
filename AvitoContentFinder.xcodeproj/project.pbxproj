@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		725D66592C92209A006AEA6E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725D66582C92209A006AEA6E /* DetailViewController.swift */; };
 		7286DF832C8DE21C00868080 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7286DF822C8DE21C00868080 /* AppDelegate.swift */; };
 		7286DF852C8DE21C00868080 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7286DF842C8DE21C00868080 /* SceneDelegate.swift */; };
 		7286DF872C8DE21C00868080 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7286DF862C8DE21C00868080 /* SearchViewController.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		725D66582C92209A006AEA6E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7286DF7F2C8DE21C00868080 /* AvitoContentFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AvitoContentFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7286DF822C8DE21C00868080 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7286DF842C8DE21C00868080 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				7286DFA02C8DF6FB00868080 /* UnsplashPhotoModel.swift */,
 				7286DFA22C8E122500868080 /* UnsplashService.swift */,
 				72A6EC512C90C986001FF007 /* SearchHistoryManager.swift */,
+				725D66582C92209A006AEA6E /* DetailViewController.swift */,
 				7286DF8B2C8DE21D00868080 /* Assets.xcassets */,
 				7286DF8D2C8DE21D00868080 /* LaunchScreen.storyboard */,
 				7286DF902C8DE21D00868080 /* Info.plist */,
@@ -153,6 +156,7 @@
 				7286DF852C8DE21C00868080 /* SceneDelegate.swift in Sources */,
 				72A6EC522C90C986001FF007 /* SearchHistoryManager.swift in Sources */,
 				7286DFA32C8E122500868080 /* UnsplashService.swift in Sources */,
+				725D66592C92209A006AEA6E /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
