@@ -130,7 +130,7 @@ final class DetailViewController: UIViewController {
     }
     
     private func setupData() {
-        descriptionLabel.text = photo.description ?? "No description available"
+        descriptionLabel.text = photo.description ?? ""
         authorLabel.text = "Author: \(photo.user.name)"
         activityIndicator.startAnimating()
         if let url = URL(string: photo.urls.full) {

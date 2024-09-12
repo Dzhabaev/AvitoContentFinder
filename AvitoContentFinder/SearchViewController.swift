@@ -18,7 +18,12 @@ final class SearchViewController: UIViewController {
     private let historyManager = SearchHistoryManager()
     private var filteredHistory: [String] = []
     
-    private let searchBar = UISearchBar()
+    private let searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Search images"
+        return searchBar
+    }()
+    
     private let tableView = UITableView()
     
     private lazy var collectionView: UICollectionView = {
@@ -29,6 +34,12 @@ final class SearchViewController: UIViewController {
             interItemSpacing: 16
         )
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.hidesWhenStopped = true
+        return indicator
     }()
     
     // MARK: - UIViewController Lifecycle
@@ -53,7 +64,8 @@ final class SearchViewController: UIViewController {
         
         [searchBar,
          collectionView,
-         tableView
+         tableView,
+         activityIndicator
         ].forEach {
             view.addSubview($0)
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -79,7 +91,10 @@ final class SearchViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
     
@@ -158,8 +173,10 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let query = searchBar.text else { return }
         historyManager.saveQuery(query)
+        activityIndicator.startAnimating()
         service.searchPhotos(query: query) { result in
             DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
                 switch result {
                 case .success(let photos):
                     self.photos = photos

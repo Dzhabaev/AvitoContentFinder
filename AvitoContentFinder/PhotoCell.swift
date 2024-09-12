@@ -31,6 +31,7 @@ final class PhotoCell: UICollectionViewCell {
         label.font = UIFont.systemFont(ofSize: 12)
         label.numberOfLines = 2
         label.textAlignment = .center
+        label.textColor = .white
         return label
     }()
     
@@ -54,7 +55,7 @@ final class PhotoCell: UICollectionViewCell {
     // MARK: - Public Methods
     
     func configure(with photo: UnsplashPhotoModel) {
-        descriptionLabel.text = photo.description ?? "No description"
+        descriptionLabel.text = photo.description ?? ""
         imageView.image = UIImage(systemName: "photo")
         activityIndicator.startAnimating()
         
@@ -93,12 +94,12 @@ final class PhotoCell: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.8),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            descriptionLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 8),
+            descriptionLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -8),
+            descriptionLabel.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 40),
             
             activityIndicator.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
